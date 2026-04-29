@@ -41,7 +41,7 @@ function draw() {
     textAlign(CENTER, CENTER);
     text("YOU LOSE", 704, 384);
     textSize(40);
-    text("Press Enter to Restart", 704, 424);
+    text("Press Enter to Restart", 704, 454);
 
     if(keyIsDown(ENTER)){
       resetStage(true);
@@ -55,7 +55,7 @@ function draw() {
     textAlign(CENTER, CENTER);
     text("YOU WIN", 704, 384);
     textSize(40);
-    text("Press Enter to Continue", 704, 424);
+    text("Press Enter to Continue", 704, 454);
 
     if(keyIsDown(ENTER)){
       resetStage(false);
@@ -70,9 +70,9 @@ function draw() {
   textSize(20);
   totalScore();
   let score_total = score + (stage-1)*dActive.length;
-  text("SCORE: "+score_total, 20, 40);
-  text("LIFE: "+life, 20, 80);
-  text("STAGE: "+stage, 20, 120);
+  text("SCORE: "+score_total, 40, 40);
+  text("LIFE: "+life, 40, 80);
+  text("STAGE: "+stage, 40, 120);
 
   //팩맨 움직임
   if (keyIsDown(LEFT_ARROW)&&isWall(px - 3, py)) px -= 3;
