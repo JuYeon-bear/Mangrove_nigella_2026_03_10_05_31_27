@@ -224,12 +224,12 @@ function enemyXY(count){
   }
 }
 
-function mousePressed(){
-  let c = get(mouseX, mouseY);
+// function mousePressed(){
+//   let c = get(mouseX, mouseY);
 
-  let r = red(c);
-  let g = green(c);
-  let b = blue(c);
+//   let r = red(c);
+//   let g = green(c);
+//   let b = blue(c);
 
-  console.log("("+mouseX+", "+mouseY+"), ("+r+", "+g+", "+b+")");
-}
+//   console.log("("+mouseX+", "+mouseY+"), ("+r+", "+g+", "+b+")");
+// }
