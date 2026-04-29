@@ -47,7 +47,18 @@ function draw() {
   noStroke();
   ellipse(px, py, pd);
 
+  for (let i = 0; i < 13; i++){
+    if (dActive[i] === true){
+      fill(255, 100, 100);
+      ellipse(dx[i], dy[i], dSize);
+    }
 
+    let distance = dist(px, py, dx[i], dy[i]);
+
+    if (distance < (pd/2) + (dSize / 2)){
+      dActive[i] = false;
+    }
+  }
 
 
 }
