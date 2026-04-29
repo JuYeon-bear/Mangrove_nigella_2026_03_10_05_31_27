@@ -17,6 +17,7 @@ let stage = 1;
 let score;
 let life = 3;
 let allEaten = false;
+let restart = false;
 
 let enemies = [];
 let nextSpawnScore = 50;
@@ -57,8 +58,10 @@ function draw() {
     textSize(40);
     text("Press Enter to Restart", 704, 454);
 
-    if(keyPressed(ENTER)){
-      resetStage(true);
+    if(keyIsDown(ENTER)){
+      if(!restart){
+        resetStage(true);
+      }
     }
 
     return;
@@ -71,12 +74,16 @@ function draw() {
     textSize(40);
     text("Press Enter to Continue", 704, 454);
 
-    if(keyPressed(ENTER)){
-      resetStage(false);
+    if(keyIsDown(ENTER)){
+      if(!restart){
+        resetStage(false);
+      }
     }
 
     return;
   }
+
+  restart = false;
 
   //팩맨 움직임
   if (keyIsDown(LEFT_ARROW)&&isWall(px - 3, py)){
@@ -285,6 +292,7 @@ function enemyXY(count){
 }
 
 function resetStage(isGameOver){
+  restart = true;
   if (isGameOver){
     stage = 1;
     life = 3;
