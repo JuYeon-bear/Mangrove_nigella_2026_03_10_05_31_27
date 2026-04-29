@@ -1,21 +1,26 @@
-let mapimg;
+let mapImg;
 let px, py;
 let pd = 20;
 
+let wallR = 20;
+let wallG = 140;
+let wallB = 175;
+
 function preload(){
-  mapimg = loadImage('Map.png');
+  mapImg = loadImage('Map.png');
 }
 
 function setup() {
   //크기가 커서 줄임
   createCanvas(1408, 768);
+  mapImg.resize(1408, 768);
   px = 704;
   py = 384;
 }
 
 function draw() {
   //맵 그리기
-  image(mapimg, 0, 0, 1408, 768);
+  image(mapimg, 0, 0);
 
   //팩맨 움직임
   if (keyIsDown(LEFT_ARROW)) px -= 3;
