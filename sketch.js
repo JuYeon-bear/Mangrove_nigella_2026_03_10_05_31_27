@@ -69,7 +69,7 @@ function draw() {
   fill(255, 255, 255);
   textSize(20);
   totalScore();
-  let score_total = score + (stage-1)*dActive.length;
+  let score_total = score + (stage-1)*dActive.length*10;
   textAlign(LEFT, BASELINE);
   text("SCORE: "+score_total, 40, 40);
   text("LIFE: "+life, 40, 80);
