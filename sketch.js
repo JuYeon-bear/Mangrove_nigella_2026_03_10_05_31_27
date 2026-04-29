@@ -40,9 +40,11 @@ function draw() {
     textSize(100);
     textAlign(CENTER, CENTER);
     text("YOU LOSE", 704, 384);
+    text("Press Enter to Restart", 704, 424);
 
-    let isGameOver = true;
-    setTimeout(resetStage(isGameOver), 3000);
+    if(keyIsDown(ENTER)){
+      resetStage(true);
+    }
 
     return;
   }
@@ -51,9 +53,11 @@ function draw() {
     textSize(100);
     textAlign(CENTER, CENTER);
     text("YOU WIN", 704, 384);
+    text("Press Enter to Continue", 704, 424);
 
-    let isGameOver = false;
-    setTimeout(resetStage(isGameOver), 3000);
+    if(keyIsDown(ENTER)){
+      resetStage(false);
+    }
 
     return;
   }
@@ -87,19 +91,20 @@ function draw() {
   ellipse(px, py, pd);
 
   //콩 그리기
+  allEaten = true;
+
   for (let i = 0; i < dActive.length; i++){
-    allEaten = true;
     if (dActive[i] === true){
       fill(255, 255, 200);
       ellipse(dx[i], dy[i], dSize);
 
       allEaten = false;
-    }
 
-    let distance = dist(px, py, dx[i], dy[i]);
+      let distance = dist(px, py, dx[i], dy[i]);
 
-    if (distance < (pd/2) + (dSize / 2)){
-      dActive[i] = false;
+      if (distance < (pd/2) + (dSize / 2)){
+        dActive[i] = false;
+      }
     }
   }
 
