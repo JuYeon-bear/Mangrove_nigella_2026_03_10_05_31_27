@@ -29,41 +29,7 @@ function setup() {
   py = 384;
 
   //적 배치 위치 찾기
-  for (let i = 0; i < 5; i++){
-    let spawnFound = false;
-    let spawnX, spawnY;
-
-    while (!spawnFound){
-      let randomIndex = floor(random(dActive.length));
-      let targetX = dx[randomIndex];
-      let targetY = dy[randomIndex];
-
-      let possibleSpots = [
-        {x: targetX + 50, y: targetY},
-        {x: targetX - 50, y: targetY},
-        {x: targetX, y: targetY + 50},
-        {x: targetX, y: targetY - 50}
-      ]
-
-      let validSpots = [];
-
-      for (let j = 0; j < possibleSpots.length; j++){
-        let spot = possibleSpots[j];
-        if (isWall(spot.x, spot.y)){
-          validSpots.push(spot);
-        }
-      }
-
-      if (validSpots.length > 0){
-        let finalSpot = random(validSpots);
-        spawnX = finalSpot.x;
-        spawnY = finalSpot.y;
-        spawnFound = true;
-      }
-    }
-
-    enemies.push({x: spawnX, y: spawnY})
-  }
+  enemyXY(5);
 }
 
 function draw() {
@@ -182,6 +148,44 @@ function isWall(nextX, nextY){
   }
 
   return true;
+}
+
+function enemyXY(count){
+  for (let i = 0; i < count; i++){
+    let spawnFound = false;
+    let spawnX, spawnY;
+
+    while (!spawnFound){
+      let randomIndex = floor(random(dActive.length));
+      let targetX = dx[randomIndex];
+      let targetY = dy[randomIndex];
+
+      let possibleSpots = [
+        {x: targetX + 50, y: targetY},
+        {x: targetX - 50, y: targetY},
+        {x: targetX, y: targetY + 50},
+        {x: targetX, y: targetY - 50}
+      ]
+
+      let validSpots = [];
+
+      for (let j = 0; j < possibleSpots.length; j++){
+        let spot = possibleSpots[j];
+        if (isWall(spot.x, spot.y)){
+          validSpots.push(spot);
+        }
+      }
+
+      if (validSpots.length > 0){
+        let finalSpot = random(validSpots);
+        spawnX = finalSpot.x;
+        spawnY = finalSpot.y;
+        spawnFound = true;
+      }
+    }
+
+    enemies.push({x: spawnX, y: spawnY})
+  }
 }
 
 function mousePressed(){
