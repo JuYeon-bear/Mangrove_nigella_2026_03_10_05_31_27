@@ -28,7 +28,7 @@ function setup() {
   px = 704;
   py = 384;
 
-  //적 배치
+  //적 배치 위치 찾기
   for (let i = 0; i < 5; i++){
     let spawnFound = false;
     let spawnX, spawnY;
@@ -120,6 +120,24 @@ function draw() {
 
     if (distance < (pd/2) + (dSize / 2)){
       dActive[i] = false;
+    }
+  }
+
+  //적 그리기
+  for (let i = 0; i < enemies.length; i++){
+    let enemy = enemies[i];
+
+    fill(255, 0, 0);
+    noStroke();
+    ellipse(enemy.x, enemy.y, pd);
+
+    let distanceEnemy = dist(px, py, enemy.x, enemy.y);
+
+    if (distanceEnemy < pd){
+      life -= 1;
+      //연속 충돌 방지 리스폰
+      px = 704;
+      py = 384;
     }
   }
 
