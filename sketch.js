@@ -173,6 +173,12 @@ function isWall(nextX, nextY){
         abs(c[2] - wallB) <= 15){
       return false;
     }
+
+    if (abs(c[0] - 10) <= 15 &&
+        abs(c[1] - 10) <= 15 &&
+        abs(c[2] - 10) <= 15){
+      return false;
+    }
   }
 
   return true;
