@@ -104,9 +104,31 @@ function draw() {
   }
 
   //팩맨 그리기
+  mouthAngle = abs(sin(frameCount * 0.2)) * PI / 4;
   fill(255, 255, 0);
   noStroke();
-  ellipse(px, py, pd);
+
+  let startAngle, endAngle;
+
+  switch (dir) {
+    case "left":
+      startAngle = PI + mouthAngle;
+      endAngle = PI - mouthAngle;
+      break;
+    case "right":
+      startAngle = mouthAngle;
+      endAngle = PI*2 - mouthAngle;
+      break;
+    case "up":
+      startAngle = PI*1.5 + mouthAngle;
+      endAngle = PI*1.5 - mouthAngle;
+      break;
+    case "down":
+      startAngle = PI*0.5 + mouthAngle;
+      endAngle = PI*0.5 - mouthAngle;
+      break;
+  }
+  arc(px, py, pd, pd, startAngle, endAngle, PIE);
 
   //콩 그리기
   allEaten = true;
@@ -281,7 +303,7 @@ function resetStage(isGameOver){
   for (let i = 0; i < dActive.length; i++){
     dActive[i] = true;
   }
-  
+
   enemyXY(5);
 }
 
