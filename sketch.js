@@ -14,6 +14,7 @@ let dActive = [true, true, true, true, true, true, true, true, true, true, true,
 let stage = 1;
 let score;
 let life = 3;
+let allEaten = false;
 
 let enemies = [];
 let nextSpawnScore = 50;
@@ -34,27 +35,36 @@ function setup() {
 }
 
 function draw() {
-  // if (life <= 0){
-  //   fill(255, 0, 0);
-  //   textSize(100);
-  //   textAlign(CENTER, CENTER);
-  //   text("YOU LOSE", 704, 384);
-  //   noLoop();
-  //   return;
-  // } else if(score == dActive.length * stage) {
-  //   stage += 1;
-  //   fill(255, 0, 0);
-  //   textSize(100);
-  //   textAlign(CENTER, CENTER);
-  //   text("YOU WIN", 704, 384);
-  // }
+  if (life <= 0){
+    fill(255, 0, 0);
+    textSize(100);
+    textAlign(CENTER, CENTER);
+    text("YOU LOSE", 704, 384);
+
+    let isGameOver = true;
+    setTimeout(resetStage(isGameOver), 3000);
+
+    return;
+  }
+  else if(allEaten) {
+    fill(255, 0, 0);
+    textSize(100);
+    textAlign(CENTER, CENTER);
+    text("YOU WIN", 704, 384);
+
+    let isGameOver = false;
+    setTimeout(resetStage(isGameOver), 3000);
+
+    return;
+  }
 
   //맵 그리기
   image(mapImg, 0, 0);
   fill(255, 255, 255);
   textSize(20);
   totalScore();
-  text("SCORE: "+score, 20, 40);
+  let score_total = score + (stage-1)*dActive.length;
+  text("SCORE: "+score_total, 20, 40);
   text("LIFE: "+life, 20, 80);
   text("STAGE: "+stage, 20, 120);
 
@@ -78,9 +88,12 @@ function draw() {
 
   //콩 그리기
   for (let i = 0; i < dActive.length; i++){
+    allEaten = true;
     if (dActive[i] === true){
       fill(255, 255, 200);
       ellipse(dx[i], dy[i], dSize);
+
+      allEaten = false;
     }
 
     let distance = dist(px, py, dx[i], dy[i]);
@@ -224,6 +237,27 @@ function enemyXY(count){
 
     enemies.push({x: spawnX, y: spawnY, dirX: 0, dirY: 0})
   }
+}
+
+function resetStage(isGameOver){
+  if (isGameOver){
+    stage = 1;
+    life = 3;
+  } else {
+    stage += 1;
+  }
+
+  px = 704;
+  py = 455;
+
+  enemies = [];
+  nextSpawnScore = 50;
+
+  for (let i = 0; i < dActive.length; i++){
+    dActive[i] = true;
+  }
+
+  enemyXY(5);
 }
 
 // function mousePressed(){
