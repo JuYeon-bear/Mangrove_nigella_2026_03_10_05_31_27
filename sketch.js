@@ -253,6 +253,7 @@ function resetStage(isGameOver){
     life = 3;
   } else {
     stage += 1;
+    allEaten = false;
   }
 
   px = 704;
