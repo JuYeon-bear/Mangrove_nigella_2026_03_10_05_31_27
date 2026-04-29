@@ -102,15 +102,15 @@ function draw() {
     let nextX = enemy.x + enemy.dirX;
     let nextY = enemy.y + enemy.dirY;
 
-    let changedir = random(100) < 4.5;
+    let changedir = random(100) < 4;
 
     if (!isWall(nextX, nextY) || (enemy.dirX === 0 && enemy.dirY === 0) || changedir){
       let validDirs = [];
 
-      if (isWall(enemy.x - 4, enemy.y)) validDirs.push({x: -3, y: 0});
-      if (isWall(enemy.x + 4, enemy.y)) validDirs.push({x: 3, y: 0});
-      if (isWall(enemy.x, enemy.y - 4)) validDirs.push({x: 0, y: -3});
-      if (isWall(enemy.x, enemy.y + 4)) validDirs.push({x: 0, y: 3});
+      if (isWall(enemy.x - 3, enemy.y)) validDirs.push({x: -3, y: 0});
+      if (isWall(enemy.x + 3, enemy.y)) validDirs.push({x: 3, y: 0});
+      if (isWall(enemy.x, enemy.y - 3)) validDirs.push({x: 0, y: -3});
+      if (isWall(enemy.x, enemy.y + 3)) validDirs.push({x: 0, y: 3});
 
       if (validDirs.length > 0){
         let randomDir = random(validDirs);
