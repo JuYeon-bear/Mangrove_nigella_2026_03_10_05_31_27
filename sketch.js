@@ -55,7 +55,7 @@ function draw() {
     textSize(40);
     text("Press Enter to Restart", 704, 454);
 
-    if(keyIsDown(ENTER)){
+    if(keyPressed(ENTER)){
       resetStage(true);
     }
 
@@ -69,7 +69,7 @@ function draw() {
     textSize(40);
     text("Press Enter to Continue", 704, 454);
 
-    if(keyIsDown(ENTER)){
+    if(keyPressed(ENTER)){
       resetStage(false);
     }
 
