@@ -36,10 +36,11 @@ function setup() {
 
 function draw() {
   if (life <= 0){
-    fill(255, 0, 0);
-    textSize(100);
+    fill(255, 255, 255);
+    textSize(80);
     textAlign(CENTER, CENTER);
     text("YOU LOSE", 704, 384);
+    textSize(40);
     text("Press Enter to Restart", 704, 424);
 
     if(keyIsDown(ENTER)){
@@ -49,10 +50,11 @@ function draw() {
     return;
   }
   else if(allEaten) {
-    fill(255, 0, 0);
-    textSize(100);
+    fill(255, 255, 255);
+    textSize(80);
     textAlign(CENTER, CENTER);
     text("YOU WIN", 704, 384);
+    textSize(40);
     text("Press Enter to Continue", 704, 424);
 
     if(keyIsDown(ENTER)){
