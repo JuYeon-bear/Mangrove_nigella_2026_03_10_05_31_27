@@ -79,7 +79,7 @@ function draw() {
   //콩 그리기
   for (let i = 0; i < dActive.length; i++){
     if (dActive[i] === true){
-      fill(255, 100, 100);
+      fill(255, 255, 200);
       ellipse(dx[i], dy[i], dSize);
     }
 
@@ -90,14 +90,33 @@ function draw() {
     }
   }
 
-  //적 그리기
+  //50점 달성마다 적 추가
   if (score >= nextSpawnScore) {
     enemyXY(2);
     nextSpawnScore += 50;
   }
-
+  //적 그리기
   for (let i = 0; i < enemies.length; i++){
     let enemy = enemies[i];
+
+    let nextX = enemy.x + 3;
+    let nextY = enemy.y + 3;
+
+    let randomEnemyIndex = floor(random(4));
+    switch(randomEnemyIndex){
+      case 0: //왼쪽
+        break;
+      case 1: //오른쪽
+        break;
+      case 2: //위쪽
+        break;
+      case 3: //아래쪽
+        break;
+    }
+
+    if (!isWall(nextX, nextY)){
+
+    }
 
     fill(255, 0, 0);
     noStroke();
