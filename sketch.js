@@ -16,6 +16,7 @@ let score;
 let life = 3;
 
 let enemies = [];
+let enemiesCount = 5;
 
 function preload(){
   mapImg = loadImage('Map.png');
@@ -29,7 +30,7 @@ function setup() {
   py = 384;
 
   //적 배치 위치 찾기
-  enemyXY(5);
+  enemyXY(enemiesCount);
 }
 
 function draw() {
@@ -90,6 +91,11 @@ function draw() {
   }
 
   //적 그리기
+  if (score%50 === 0 && enemies.length < enemiesCount) {
+    enemyXY(2);
+    enemiesCount += 2;
+  }
+
   for (let i = 0; i < enemies.length; i++){
     let enemy = enemies[i];
 
