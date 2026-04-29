@@ -26,5 +26,5 @@ function mousePressed(){
   let g = green(c);
   let b = blue(c);
 
-  console.log('(${mouseX}, ${mouseY}) , (${r}, ${g}, ${b})');
+  console.log("("+mouseX+", "+mouseY+"), ("+r+", "+g+", "+b+")");
 }
