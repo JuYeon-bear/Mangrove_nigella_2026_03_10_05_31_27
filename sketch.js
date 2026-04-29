@@ -39,15 +39,15 @@ function setup() {
       let targetY = dy[randomIndex];
 
       let possibleSpots = [
-        {x: targetX + 25, y: targetY},
-        {x: targetX - 25, y: targetY},
-        {x: targetX, y: targetY + 25},
-        {x: targetX, y: targetY - 25}
+        {x: targetX + 50, y: targetY},
+        {x: targetX - 50, y: targetY},
+        {x: targetX, y: targetY + 50},
+        {x: targetX, y: targetY - 50}
       ]
 
       let validSpots = [];
 
-      for (let j = 0; j < possibleSpots,length; j++){
+      for (let j = 0; j < possibleSpots.length; j++){
         let spot = possibleSpots[j];
         if (isWall(spot.x, spot.y)){
           validSpots.push(spot);
