@@ -12,6 +12,7 @@ let dSize = 15;
 let dActive = [true, true, true, true, true, true, true, true, true, true, true, true, true];
 
 let score = 0;
+let life = 3;
 
 function preload(){
   mapImg = loadImage('Map.png');
@@ -28,6 +29,10 @@ function setup() {
 function draw() {
   //맵 그리기
   image(mapImg, 0, 0);
+  fill(255, 255, 255);
+  textSize(20);
+  text("SCORE: "+score, 20, 40);
+  text("LIFE: "+life, 20, 80);
 
   //팩맨 움직임
   if (keyIsDown(LEFT_ARROW)&&isWall(px - 3, py)) px -= 3;
@@ -57,6 +62,7 @@ function draw() {
 
     if (distance < (pd/2) + (dSize / 2)){
       dActive[i] = false;
+      score += 10
     }
   }
 
